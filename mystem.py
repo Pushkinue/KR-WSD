@@ -7,14 +7,16 @@ def mystem(text):
     """Возвращает список, состоящий из списков вида [token, lemma, pos]"""
 
     coding = 'UTF-8'
+    path = './mystem'
+
     if platform.system() == 'Windows':
         coding = 'cp866'
+        path = 'mystem'
 
     text = text.replace('—', '-')
     text = text.replace('"', '')
 	# Выполнение команды mystem
-    #path = 'D:\Documents\Study\Projects\Python\mnogoznal\mystem'
-    path = 'mystem'
+
     command = (path, '-e', coding, '-ndisc')
     p = Popen(command, stdout=PIPE, stdin=PIPE, stderr=STDOUT)
     output = p.communicate(input=text.encode(coding))[0]
